@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Activities in Tankulan, Manolo Fortich</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background: #fde2e4;
+            margin: 0;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+        .letter-container {
+            background: #fff;
+            padding: 30px;
+            border: 2px solid #f78fb3;
+            border-radius: 10px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 500px;
+            width: 90%;
+            margin-bottom: 20px;
+        }
+
+        .typing-text {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #333;
+            white-space: pre-wrap;
+            overflow: hidden;
+            border-right: 2px solid #333;
+        }
+
+        .activities-button {
+            background-color: #f78fb3;
+            color: #fff;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .activities-button:hover {
+            background-color: #e66798;
+        }
+
+        .place-info {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .place-info img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="letter-container">
+        <div class="typing-text" id="place-description">
+            <!-- Text will be dynamically inserted here -->
+        </div>
+        <div class="place-info" id="place-info">
+            <img src="" alt="Place Image" id="place-image">
+            <p id="place-about"></p>
+        </div>
+
+        <button class="activities-button" id="prev-button" onclick="showPrev()">Prev</button>
+        <button class="activities-button" id="next-button" onclick="showNext()">Next</button>
+    </div>
+
+    <script>
+        // Define the places with their information
+        const places = [
+            {
+                title: "Pizza Kid",
+                description: "Enjoy delicious pizzas in a cozy setting.",
+                imgSrc: "place1.jpg",
+                about: "Pizza Kid serves a wide variety of pizzas and casual food, perfect for a relaxed day out with loved ones."
+            },
+            {
+                title: "Don Machiatto Cafe",
+                description: "Perfect spot for coffee lovers and casual meet-ups.",
+                imgSrc: "place2.jpg",
+                about: "Don Machiatto Cafe is a warm and inviting space where you can enjoy a good cup of coffee and some light bites."
+            },
+            {
+                title: "Camp Phillips Bazaar",
+                description: "A local bazaar for unique finds and local goods.",
+                imgSrc: "place3.jpg",
+                about: "Camp Phillips Bazaar offers a vibrant shopping experience where you can buy local products, handcrafted goods, and more."
+            },
+            {
+                title: "Dahilayan Forest Park",
+                description: "Adventure and nature combined for an unforgettable experience.",
+                imgSrc: "place4.jpg",
+                about: "Dahilayan Forest Park is known for its thrilling rides and cool weather, perfect for an adventurous and nature-filled day."
+            },
+            {
+                title: "Dahilayan Adventure Park",
+                description: "Thrilling rides and activities for adrenaline seekers.",
+                imgSrc: "place5.jpg",
+                about: "Dahilayan Adventure Park offers extreme sports and adrenaline-pumping activities, making it the ideal spot for thrill-seekers."
+            }
+        ];
+
+        let currentIndex = 0;
+
+        // Show place info on button click
+        function showPlace(index) {
+            const place = places[index];
+
+            // Display typing effect description
+            document.getElementById('place-description').textContent = `${place.title}: ${place.description}`;
+            
+            // Display picture and about info
+            document.getElementById('place-image').src = place.imgSrc;
+            document.getElementById('place-about').textContent = place.about;
+            document.getElementById('place-info').style.display = 'block';
+        }
+
+        // Show next place
+        function showNext() {
+            currentIndex = (currentIndex + 1) % places.length;
+            showPlace(currentIndex);
+        }
+
+        // Show previous place
+        function showPrev() {
+            currentIndex = (currentIndex - 1 + places.length) % places.length;
+            showPlace(currentIndex);
+        }
+
+        // Show the first place when the page loads
+        showPlace(currentIndex);
+    </script>
+</body>
+</html>
