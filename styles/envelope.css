@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    background: #ffe4ec;
+    overflow: hidden;
+    position: relative;
+}
+
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    overflow: hidden;
+}
+
+#background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.envelope {
+    position: relative;
+    width: 45%;
+    height: 55%;
+    background: #fbcad9;
+    border: 4px solid #f8a5c2;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    transform-origin: center;
+    transition: all 1.5s ease-in-out;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 0 20px 5px #ffb6c1, 0 0 40px 10px #ffb6c1, 0 0 60px 15px #ffb6c1;
+    animation: heartbeat-glow 1.5s infinite, envelope-beat 1.5s infinite;
+    z-index: 2;
+}
+
+@keyframes heartbeat-glow {
+    0% { box-shadow: 0 0 20px 5px #ffb6c1, 0 0 40px 10px #ffb6c1, 0 0 60px 15px #ffb6c1; }
+    50% { box-shadow: 0 0 30px 10px #ffc0cb, 0 0 50px 15px #ffc0cb, 0 0 70px 20px #ffc0cb; }
+    100% { box-shadow: 0 0 20px 5px #ffb6c1, 0 0 40px 10px #ffb6c1, 0 0 60px 15px #ffb6c1; }
+}
+
+@keyframes envelope-beat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+}
+
+.flap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background: #f8a5c2;
+    clip-path: polygon(0 0, 100% 0, 50% 80%);
+    transform-origin: top center;
+    z-index: 2;
+}
+
+.heart-button {
+    background: #ff6b81;
+    color: white;
+    padding: 20px;
+    width: 150px;
+    height: 130px;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    font-family: 'Dancing Script', cursive;
+    position: relative;
+    top: -20px;
+    clip-path: polygon(50% 0%, 61% 12%, 75% 15%, 85% 25%, 90% 40%, 85% 60%, 75% 75%, 50% 100%, 25% 75%, 15% 60%, 10% 40%, 15% 25%, 25% 15%, 39% 12%);
+    transition: background 0.3s ease, transform 0.3s ease;
+    animation: heartbeat 1s infinite, float-text 2s infinite ease-in-out;
+}
+
+.heart-button:hover {
+    background: #ff4b6e;
+    transform: scale(1.15);
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+@keyframes float-text {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+.hot-air-balloon {
+    position: absolute;
+    bottom: 10%;
+    left: -20%;
+    width: 120px;
+    height: 160px;
+    background: pink;
+    border-radius: 60% 60% 40% 40%;
+    animation: balloonFloat 15s linear infinite;
+}
+
+@keyframes balloonFloat {
+    from { transform: translateX(0); }
+    to { transform: translateX(120vw); }
+}

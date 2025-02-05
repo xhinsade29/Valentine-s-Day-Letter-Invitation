@@ -4,163 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine's Envelope</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap');
-
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: 'Arial', sans-serif;
-            background: #ffe4ec;
-            overflow: hidden;
-            position: relative; /* Set the body position to relative */
-        }
-
-        /* Background image layer */
-        .image-layer {
-            position: absolute; /* Position image in the background */
-            top: 0;
-            left: 0;
-            width: 100%; /* Make the image cover the full viewport */
-            height: 100%;
-            background-image: url('./img/bg2.jpg'); /* Replace with your image URL */
-            background-size: cover;
-            background-position: center;
-            z-index: 1; /* Put the image behind the envelope */
-        }
-
-        .envelope {
-            position: relative;
-            width: 45%;
-            height: 55%;
-            background: #fbcad9;
-            border: 4px solid #f8a5c2;
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            border-radius: 10px;
-            cursor: pointer;
-            transform-origin: center;
-            transition: all 1.5s ease-in-out;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 0 20px 5px #ffb6c1, 0 0 40px 10px #ffb6c1, 0 0 60px 15px #ffb6c1;
-            animation: heartbeat-glow 1.5s infinite, envelope-beat 1.5s infinite;
-            z-index: 2; /* Ensure the envelope stays above the image layer */
-        }
-
-        @keyframes heartbeat-glow {
-            0% { box-shadow: 0 0 20px 5px #ffb6c1, 0 0 40px 10px #ffb6c1, 0 0 60px 15px #ffb6c1; }
-            50% { box-shadow: 0 0 30px 10px #ffc0cb, 0 0 50px 15px #ffc0cb, 0 0 70px 20px #ffc0cb; }
-            100% { box-shadow: 0 0 20px 5px #ffb6c1, 0 0 40px 10px #ffb6c1, 0 0 60px 15px #ffb6c1; }
-        }
-
-        @keyframes envelope-beat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-        }
-
-        .flap {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 60%;
-            background: #f8a5c2;
-            clip-path: polygon(0 0, 100% 0, 50% 80%);
-            transform-origin: top center;
-            z-index: 2;
-        }
-
-        .heart-button {
-            background: #ff6b81;
-            color: white;
-            padding: 20px;
-            width: 150px;
-            height: 130px;
-            border: none;
-            cursor: pointer;
-            font-size: 24px;
-            font-family: 'Dancing Script', cursive;
-            position: relative;
-            top: -20px;
-            clip-path: polygon(50% 0%, 61% 12%, 75% 15%, 85% 25%, 90% 40%, 85% 60%, 75% 75%, 50% 100%, 25% 75%, 15% 60%, 10% 40%, 15% 25%, 25% 15%, 39% 12%);
-            transition: background 0.3s ease, transform 0.3s ease;
-            animation: heartbeat 1s infinite, float-text 2s infinite ease-in-out;
-        }
-
-        .heart-button:hover {
-            background: #ff4b6e;
-            transform: scale(1.15);
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.1); }
-        }
-
-        @keyframes float-text {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-    </style>
+    <link rel="stylesheet" href="./styles/envelope.css">
 </head>
 <body>
-    <!-- Background Layer -->
-    <div class="image-layer"></div>
+    <div class="video-background">
+        <video autoplay muted loop id="background-video">
+            <source src="img/background.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="hot-air-balloon"></div>
 
     <div class="envelope" id="envelope">
         <div class="flap"></div>
         <button class="heart-button" onclick="openEnvelope()">Open Me</button>
     </div>
 
+    <audio id="background-music" loop>
+        <source src="audio/romantic_music.mp3" type="audio/mp3">
+    </audio>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
-
-    <script>
-        function openEnvelope() {
-            const flap = document.querySelector('.flap');
-            const button = document.querySelector('.heart-button');
-            const envelope = document.querySelector('.envelope');
-
-            button.style.pointerEvents = 'none';
-
-            gsap.to(flap, { rotationX: -180, duration: 1, ease: 'power2.inOut' });
-
-            gsap.to(envelope, { 
-                width: '900vw',
-                height: '900vh',
-                borderRadius: 0,
-                duration: 1.5,
-                ease: 'power2.inOut' 
-            });
-
-            createHeartConfetti();
-
-            setTimeout(() => {
-                window.location.href = 'letter.html';
-            }, 500);
-        }
-
-        function createHeartConfetti() {
-            const heartConfetti = {
-                particleCount: 250,
-                spread: 360,
-                startVelocity: 100,
-                origin: { x: 0.5, y: 0.5 },
-                shapes: ['❤'],
-                scalar: 3,
-                colors: ['#ffb6c1', '#ff6b81', '#ffc0cb', '#ff4b6e']
-            };
-
-            confetti(Object.assign({}, heartConfetti, { angle: 60 }));
-            confetti(Object.assign({}, heartConfetti, { angle: 120 }));
-            confetti(Object.assign({}, heartConfetti, { angle: 180 }));
-            confetti(Object.assign({}, heartConfetti, { angle: 300 }));
-        }
-    </script>
+    <script src="./scripts/envelope.js"></script>
 </body>
 </html>
