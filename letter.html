@@ -4,78 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Animated Letter</title>
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            height: 100vh;
-            background: #fde2e4;
-            margin: 0;
-            font-family: 'Courier New', Courier, monospace;
-        }
-
-        .letter-container {
-            background: #fff;
-            padding: 30px;
-            border: 2px solid #f78fb3;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            max-width: 500px;
-            width: 90%;
-            margin-bottom: 20px;
-        }
-
-        .typing-text {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #333;
-            white-space: pre-wrap;
-            overflow: hidden;
-            border-right: 2px solid #333;
-        }
-
-        .activities-button {
-            background-color: #f78fb3;
-            color: #fff;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-        }
-
-        .activities-button:hover {
-            background-color: #e66798;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/letter.css">
 </head>
 <body>
+    <!-- Background Video -->
+    <div class="video-background">
+        <video autoplay muted loop>
+            <source src="img/background.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <!-- Letter Container -->
     <div class="letter-container">
         <div class="typing-text" id="typing-text"></div>
     </div>
-    <button class="activities-button" onclick="goToActivities()">See Date Activities 💖</button>
 
-    <script>
-        const message = `Dear Beloved,\n\nI just wanted to remind you how special you are to me.\nEvery moment with you feels like magic, and I cherish\nevery memory we've created together.\n\nWith all my love,\nYour Secret Admirer 💌`;
-        const typingTextElement = document.getElementById('typing-text');
-        let index = 0;
+    <!-- Button to go to Activities -->
+    <button class="activities-button" onclick="goToActivities()">Check Out the Date Activities 💖</button>
 
-        function typeLetter() {
-            if (index < message.length) {
-                typingTextElement.innerHTML += message.charAt(index);
-                index++;
-                setTimeout(typeLetter, 100);
-            }
-        }
+    <!-- Background music and click sound -->
+    <audio id="background-music" src="audio/bgmusic.mp3" autoplay loop playsinline></audio>
+    <audio id="click-sound" src="audio/mouse-click.mp3" preload="auto"></audio>
 
-        function goToActivities() {
-            window.location.href = 'activities.html';
-        }
-
-        typeLetter();
-    </script>
+    <script src="scripts/letter.js"></script>
 </body>
 </html>
