@@ -13,17 +13,15 @@
         </video>
     </div>
 
-    <div class="hot-air-balloon"></div>
 
     <div class="envelope" id="envelope">
         <div class="flap"></div>
         <button class="heart-button" onclick="openEnvelope()">Open Me</button>
     </div>
 
-    <audio id="background-music" loop>
-        <source src="audio/romantic_music.mp3" type="audio/mp3">
-    </audio>
-
+    <audio id="background-music" src="./audio/bgmusic.mp3" autoplay loop playsinline></audio>
+    <audio id="click-sound" src="audio/mouse-click.mp3"></audio> 
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.10.0/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
     <script src="./scripts/envelope.js"></script>
