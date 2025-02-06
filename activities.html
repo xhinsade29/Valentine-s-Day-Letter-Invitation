@@ -11,30 +11,48 @@
             justify-content: center;
             align-items: center;
             flex-direction: column;
-            height: 100vh;
             background: #fde2e4;
             margin: 0;
             font-family: 'Courier New', Courier, monospace;
+            padding: 20px;
         }
 
         .letter-container {
             background: #fff;
-            padding: 30px;
+            padding: 20px;
             border: 2px solid #f78fb3;
             border-radius: 10px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            max-width: 500px;
-            width: 90%;
-            margin-bottom: 20px;
+            max-width: 800px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
         }
 
-        .typing-text {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #333;
-            white-space: pre-wrap;
-            overflow: hidden;
-            border-right: 2px solid #333;
+        .place-container {
+            display: flex;
+            flex-direction: row;
+            gap: 20px;
+        }
+
+        .place-info {
+            flex: 1;
+        }
+
+        .place-info img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        .map-container {
+            margin-top: 10px;
+        }
+
+        .place-details {
+            flex: 1;
         }
 
         .activities-button {
@@ -46,103 +64,133 @@
             cursor: pointer;
             font-size: 16px;
             transition: background-color 0.3s ease;
-            margin-top: 10px;
+            margin: 5px;
         }
 
         .activities-button:hover {
             background-color: #e66798;
         }
 
-        .place-info {
-            margin-top: 20px;
-            display: none;
+        .button-container {
+            display: flex;
+            justify-content: space-between;
         }
 
-        .place-info img {
-            width: 100%;
-            height: auto;
-            border-radius: 8px;
+        .activities-list {
+            margin-top: 10px;
+            padding-left: 20px;
+        }
+
+        .activities-list li {
+            margin-bottom: 5px;
         }
     </style>
 </head>
 <body>
 
     <div class="letter-container">
-        <div class="typing-text" id="place-description">
-            <!-- Text will be dynamically inserted here -->
-        </div>
-        <div class="place-info" id="place-info">
-            <img src="" alt="Place Image" id="place-image">
-            <p id="place-about"></p>
+        <div class="place-container">
+            <div class="place-info">
+                <img src="" alt="Place Image" id="place-image">
+                <div class="map-container" id="place-map"></div>
+            </div>
+            <div class="place-details">
+                <h2 id="place-title"></h2>
+                <p id="place-description"></p>
+                <p id="place-availability"></p>
+                <p id="place-contact"></p>
+                <ul class="activities-list" id="place-activities"></ul>
+            </div>
         </div>
 
-        <button class="activities-button" id="prev-button" onclick="showPrev()">Prev</button>
-        <button class="activities-button" id="next-button" onclick="showNext()">Next</button>
+        <div class="button-container">
+            <button class="activities-button" onclick="showPrev()">Prev</button>
+            <button class="activities-button" onclick="showNext()">Next</button>
+        </div>
     </div>
 
     <script>
-        // Define the places with their information
         const places = [
             {
                 title: "Pizza Kid",
                 description: "Enjoy delicious pizzas in a cozy setting.",
-                imgSrc: "place1.jpg",
-                about: "Pizza Kid serves a wide variety of pizzas and casual food, perfect for a relaxed day out with loved ones."
+                availability: "Open daily from 10 AM to 9 PM",
+                contact: "Facebook: @PizzaKid | Contact: 09649968998",
+                imgSrc: "src/pizzakid.jpg",
+                coordinates: [8.357462, 124.8650361],
+                activities: ["Try different pizza flavors", "Share a milkshake", "Take fun selfies"]
             },
             {
                 title: "Don Machiatto Cafe",
                 description: "Perfect spot for coffee lovers and casual meet-ups.",
-                imgSrc: "place2.jpg",
-                about: "Don Machiatto Cafe is a warm and inviting space where you can enjoy a good cup of coffee and some light bites."
+                availability: "Open from 8 AM to 8 PM, Mon-Sat",
+                contact: "Instagram: @DonMachiatto | Contact: 0918-765-4321",
+                imgSrc: "src/donmac.jpg",
+                coordinates: [8.367679414129869, 124.86368551254361],
+                activities: ["Sip your favorite coffee together", "Play card games", "Write love notes"]
             },
             {
                 title: "Camp Phillips Bazaar",
                 description: "A local bazaar for unique finds and local goods.",
-                imgSrc: "place3.jpg",
-                about: "Camp Phillips Bazaar offers a vibrant shopping experience where you can buy local products, handcrafted goods, and more."
+                availability: "Open every weekend from 9 AM to 6 PM",
+                contact: "Facebook: @CampBazaar | Contact: 0923-456-7890",
+                imgSrc: "src/bazaar.jpg",
+                coordinates: [8.324123579895774, 124.81203845732459],
+                activities: ["Shop for local crafts", "Try street food", "Capture candid moments"]
             },
             {
                 title: "Dahilayan Forest Park",
                 description: "Adventure and nature combined for an unforgettable experience.",
-                imgSrc: "place4.jpg",
-                about: "Dahilayan Forest Park is known for its thrilling rides and cool weather, perfect for an adventurous and nature-filled day."
-            },
-            {
-                title: "Dahilayan Adventure Park",
-                description: "Thrilling rides and activities for adrenaline seekers.",
-                imgSrc: "place5.jpg",
-                about: "Dahilayan Adventure Park offers extreme sports and adrenaline-pumping activities, making it the ideal spot for thrill-seekers."
+                availability: "Open daily from 7 AM to 5 PM",
+                contact: "Website: dahilayanforestpark.com | Contact: 0934-567-8901",
+                imgSrc: "src/ddahilayan.jpg",
+                coordinates: [8.204155401177754, 124.85692631772872],
+                activities: ["Go for a nature walk", "Have a picnic", "Ride the luge together"]
             }
         ];
 
         let currentIndex = 0;
 
-        // Show place info on button click
         function showPlace(index) {
             const place = places[index];
 
-            // Display typing effect description
-            document.getElementById('place-description').textContent = `${place.title}: ${place.description}`;
-            
-            // Display picture and about info
+            document.getElementById('place-title').textContent = place.title;
+            document.getElementById('place-description').textContent = place.description;
+            document.getElementById('place-availability').textContent = `Availability: ${place.availability}`;
+            document.getElementById('place-contact').textContent = `Contact: ${place.contact}`;
             document.getElementById('place-image').src = place.imgSrc;
-            document.getElementById('place-about').textContent = place.about;
-            document.getElementById('place-info').style.display = 'block';
+
+            const activitiesList = document.getElementById('place-activities');
+            activitiesList.innerHTML = '';
+            place.activities.forEach(activity => {
+                const li = document.createElement('li');
+                li.textContent = activity;
+                activitiesList.appendChild(li);
+            });
+
+            // Fixing the map display
+            const mapContainer = document.getElementById('place-map');
+            mapContainer.innerHTML = `
+                <iframe
+                    width="100%"
+                    height="250"
+                    frameborder="0" 
+                    style="border:0; border-radius: 8px;"
+                    src="https://www.google.com/maps?q=${place.coordinates[0]},${place.coordinates[1]}&output=embed"
+                    allowfullscreen>
+                </iframe>`;
         }
 
-        // Show next place
         function showNext() {
             currentIndex = (currentIndex + 1) % places.length;
             showPlace(currentIndex);
         }
 
-        // Show previous place
         function showPrev() {
             currentIndex = (currentIndex - 1 + places.length) % places.length;
             showPlace(currentIndex);
         }
 
-        // Show the first place when the page loads
         showPlace(currentIndex);
     </script>
 </body>
