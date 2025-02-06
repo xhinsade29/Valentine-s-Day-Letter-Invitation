@@ -1,0 +1,38 @@
+[
+    {
+        "title": "Pizza Kid",
+        "description": "Enjoy delicious pizzas in a cozy setting.",
+        "availability": "Open daily from 10 AM to 9 PM",
+        "contact": "Facebook: <a href='https://www.facebook.com/profile.php?id=61567197577726' target='_blank'>@PizzaKid</a> | Contact: <a href='tel:+639649968998'>09649968998</a>",
+        "imgSrc": "src/pizzakid.jpg",
+        "coordinates": [8.357462, 124.8650361],
+        "activities": ["Try different pizza flavors", "Share a milkshake", "Take fun selfies"]
+    },
+    {
+        "title": "Don Machiatto Cafe",
+        "description": "Perfect spot for coffee lovers and casual meet-ups.",
+        "availability": "Open from 8 AM to 8 PM, Mon-Sat",
+        "contact": "Instagram: <a href='https://www.facebook.com/monbisinayawanbranch/posts/pfbid0M9y3yB8CwcUwz3gRPxxr2aQUw3ZFWTHH2oft3s1nuoCX7UtpDFUf6xzkCyuT6EBrl' target='_blank'>@DonMachiatto</a> | Contact: <a href='tel:+639649968998'>09649968998</a>",
+        "imgSrc": "src/donmac.jpg",
+        "coordinates": [8.367679414129869, 124.86368551254361],
+        "activities": ["Sip your favorite coffee together", "Play card games", "Write love notes"]
+    },
+    {
+        "title": "Camp Phillips Bazaar",
+        "description": "A local bazaar for unique finds and local goods.",
+        "availability": "Open every weekend from 9 AM to 6 PM",
+        "contact": "Facebook: <a href='https://www.facebook.com/CampBazaar' target='_blank'>@CampBazaar</a> | Contact: <a href='tel:+639234567890'>0923-456-7890</a>",
+        "imgSrc": "src/bazaar.jpg",
+        "coordinates": [8.324123579895774, 124.81203845732459],
+        "activities": ["Shop for local crafts", "Try street food", "Capture candid moments"]
+    },
+    {
+        "title": "Dahilayan Forest Park",
+        "description": "Adventure and nature combined for an unforgettable experience.",
+        "availability": "Open daily from 7 AM to 5 PM",
+        "contact": "Website: <a href='https://www.facebook.com/dahilayanforestpark' target='_blank'>dahilayanforestpark.com</a> | Contact: <a href='tel:+639345678901'>0934-567-8901</a>",
+        "imgSrc": "src/ddahilayan.jpg",
+        "coordinates": [8.204155401177754, 124.85692631772872],
+        "activities": ["Go for a nature walk", "Have a picnic", "Ride the luge together"]
+    }
+]

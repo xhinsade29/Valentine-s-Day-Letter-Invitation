@@ -4,90 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Date Activities in Tankulan, Manolo Fortich</title>
-
-    <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            background: #fde2e4;
-            margin: 0;
-            font-family: 'Courier New', Courier, monospace;
-            padding: 20px;
-        }
-
-        .letter-container {
-            background: #fff;
-            padding: 20px;
-            border: 2px solid #f78fb3;
-            border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            max-width: 800px;
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .place-container {
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-        }
-
-        .place-info {
-            flex: 1;
-        }
-
-        .place-info img {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 8px;
-        }
-
-        .map-container {
-            margin-top: 10px;
-        }
-
-        .place-details {
-            flex: 1;
-        }
-
-        .activities-button {
-            background-color: #f78fb3;
-            color: #fff;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 16px;
-            transition: background-color 0.3s ease;
-            margin: 5px;
-        }
-
-        .activities-button:hover {
-            background-color: #e66798;
-        }
-
-        .button-container {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        .activities-list {
-            margin-top: 10px;
-            padding-left: 20px;
-        }
-
-        .activities-list li {
-            margin-bottom: 5px;
-        }
-    </style>
+    <link rel="stylesheet" href="styles/activity.css">
+    <!-- Include FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 
+     <!-- Background Video -->
+     <div class="video-background">
+        <video autoplay muted loop>
+            <source src="src/background.mp4" type="video/mp4">
+        </video>
+    </div>
+    
     <div class="letter-container">
         <div class="place-container">
             <div class="place-info">
@@ -98,100 +27,29 @@
                 <h2 id="place-title"></h2>
                 <p id="place-description"></p>
                 <p id="place-availability"></p>
-                <p id="place-contact"></p>
-                <ul class="activities-list" id="place-activities"></ul>
+                <div id="place-contact">
+                    <!-- Contact with icons -->
+                    <p><i class="fas fa-phone-alt"></i> <span class="contact-text">Contact: 09649968998</span></p>
+                    <p><i class="fab fa-facebook"></i> <span class="contact-text">Facebook: @PizzaKid</span></p>
+                </div>
+                
+                <!-- Activities Section with Title and Border -->
+                <h3 class="activities-title">Activities</h3>
+                <ul class="activities-list" id="place-activities">
+                    <!-- Activities will be inserted dynamically here -->
+                    <li><span class="activity-text">Activity 1: Explore the surroundings</span></li>
+                    <li><span class="activity-text">Activity 2: Enjoy local delicacies</span></li>
+                    <li><span class="activity-text">Activity 3: Scenic photo opportunities</span></li>
+                </ul>
             </div>
         </div>
 
         <div class="button-container">
-            <button class="activities-button" onclick="showPrev()">Prev</button>
-            <button class="activities-button" onclick="showNext()">Next</button>
+            <button class="activities-button prev">Prev</button>
+            <button class="activities-button next">Next</button>
         </div>
     </div>
 
-    <script>
-        const places = [
-            {
-                title: "Pizza Kid",
-                description: "Enjoy delicious pizzas in a cozy setting.",
-                availability: "Open daily from 10 AM to 9 PM",
-                contact: "Facebook: @PizzaKid | Contact: 09649968998",
-                imgSrc: "src/pizzakid.jpg",
-                coordinates: [8.357462, 124.8650361],
-                activities: ["Try different pizza flavors", "Share a milkshake", "Take fun selfies"]
-            },
-            {
-                title: "Don Machiatto Cafe",
-                description: "Perfect spot for coffee lovers and casual meet-ups.",
-                availability: "Open from 8 AM to 8 PM, Mon-Sat",
-                contact: "Instagram: @DonMachiatto | Contact: 0918-765-4321",
-                imgSrc: "src/donmac.jpg",
-                coordinates: [8.367679414129869, 124.86368551254361],
-                activities: ["Sip your favorite coffee together", "Play card games", "Write love notes"]
-            },
-            {
-                title: "Camp Phillips Bazaar",
-                description: "A local bazaar for unique finds and local goods.",
-                availability: "Open every weekend from 9 AM to 6 PM",
-                contact: "Facebook: @CampBazaar | Contact: 0923-456-7890",
-                imgSrc: "src/bazaar.jpg",
-                coordinates: [8.324123579895774, 124.81203845732459],
-                activities: ["Shop for local crafts", "Try street food", "Capture candid moments"]
-            },
-            {
-                title: "Dahilayan Forest Park",
-                description: "Adventure and nature combined for an unforgettable experience.",
-                availability: "Open daily from 7 AM to 5 PM",
-                contact: "Website: dahilayanforestpark.com | Contact: 0934-567-8901",
-                imgSrc: "src/ddahilayan.jpg",
-                coordinates: [8.204155401177754, 124.85692631772872],
-                activities: ["Go for a nature walk", "Have a picnic", "Ride the luge together"]
-            }
-        ];
-
-        let currentIndex = 0;
-
-        function showPlace(index) {
-            const place = places[index];
-
-            document.getElementById('place-title').textContent = place.title;
-            document.getElementById('place-description').textContent = place.description;
-            document.getElementById('place-availability').textContent = `Availability: ${place.availability}`;
-            document.getElementById('place-contact').textContent = `Contact: ${place.contact}`;
-            document.getElementById('place-image').src = place.imgSrc;
-
-            const activitiesList = document.getElementById('place-activities');
-            activitiesList.innerHTML = '';
-            place.activities.forEach(activity => {
-                const li = document.createElement('li');
-                li.textContent = activity;
-                activitiesList.appendChild(li);
-            });
-
-            // Fixing the map display
-            const mapContainer = document.getElementById('place-map');
-            mapContainer.innerHTML = `
-                <iframe
-                    width="100%"
-                    height="250"
-                    frameborder="0" 
-                    style="border:0; border-radius: 8px;"
-                    src="https://www.google.com/maps?q=${place.coordinates[0]},${place.coordinates[1]}&output=embed"
-                    allowfullscreen>
-                </iframe>`;
-        }
-
-        function showNext() {
-            currentIndex = (currentIndex + 1) % places.length;
-            showPlace(currentIndex);
-        }
-
-        function showPrev() {
-            currentIndex = (currentIndex - 1 + places.length) % places.length;
-            showPlace(currentIndex);
-        }
-
-        showPlace(currentIndex);
-    </script>
+    <script src="scripts/activity.js"></script>
 </body>
 </html>
