@@ -1,12 +1,13 @@
 let isMusicPlayed = false;
-const message = `Hey my love,
+const message = `Hey love,
 
-I've been thinking about us, and I can't help but smile. I've planned something truly special, just for the two of us, and I can't wait to share it with you. Every moment with you feels like magic, and these activities I've lined up are just the beginning of many more beautiful memories we'll create together. 
+Valentine’s Day is coming up, and I’d love to spend it with you! 💖 Let’s meet up at Manolo Fortich terminal around 9 AM—I’ve planned something special for us. 
 
-Let me know if you're in, and we can make this day unforgettable, just like every moment we spend together.
+Nothing too fancy, just a day filled with good vibes, fun, and of course, my favorite person (that’s you 😉). You can check out the activities first before deciding—just let me know what you think! 
 
-With all my heart,  
-xhinsade 💖`;
+Can’t wait to see you! 🥰  
+
+- xhinsade`;
 
 const typingTextElement = document.getElementById('typing-text');
 let index = 0;
