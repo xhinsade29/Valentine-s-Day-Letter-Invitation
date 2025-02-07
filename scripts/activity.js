@@ -69,8 +69,16 @@ function showPlace(index) {
         </iframe>`;
 }
 
+// Function to play click sound
+function playClickSound() {
+    const clickSound = document.getElementById('click-sound');
+    clickSound.currentTime = 0; // Reset sound to start
+    clickSound.play(); // Play sound
+}
+
 // Next place
 function showNext() {
+    playClickSound(); // Play click sound
     currentIndex = (currentIndex + 1) % places.length;
 
     if (currentIndex === 0) {
@@ -83,6 +91,7 @@ function showNext() {
 
 // Previous place
 function showPrev() {
+    playClickSound(); // Play click sound
     currentIndex = (currentIndex - 1 + places.length) % places.length;
     showPlace(currentIndex);
 }

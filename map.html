@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map of Date Locations</title>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Map of Date Activities in Tankulan, Manolo Fortich</h2>
+    <div id="map"></div>
+
+    <script>
+        function initMap() {
+            // Center map on Manolo Fortich
+            const center = { lat: 8.357462, lng: 124.8650361 };
+
+            // Create map
+            const map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 13,
+                center: center,
+            });
+
+            // Locations from JSON
+            const places = [
+                {
+                    title: "Pizza Kid",
+                    coordinates: { lat: 8.357462, lng: 124.8650361 },
+                    info: "Enjoy delicious pizzas in a cozy setting."
+                },
+                {
+                    title: "Don Machiatto Cafe",
+                    coordinates: { lat: 8.367679414129869, lng: 124.86368551254361 },
+                    info: "Perfect spot for coffee lovers and casual meet-ups."
+                },
+                {
+                    title: "Camp Phillips Bazaar",
+                    coordinates: { lat: 8.324123579895774, lng: 124.81203845732459 },
+                    info: "A local bazaar for unique finds and local goods."
+                },
+                {
+                    title: "Dahilayan Forest Park",
+                    coordinates: { lat: 8.204155401177754, lng: 124.85692631772872 },
+                    info: "Adventure and nature combined for an unforgettable experience."
+                }
+            ];
+
+            // Add markers to map
+            places.forEach(place => {
+                const marker = new google.maps.Marker({
+                    position: place.coordinates,
+                    map: map,
+                    title: place.title
+                });
+
+                // Info window
+                const infoWindow = new google.maps.InfoWindow({
+                    content: `<h3>${place.title}</h3><p>${place.info}</p>`
+                });
+
+                // Show info window on click
+                marker.addListener("click", () => {
+                    infoWindow.open(map, marker);
+                });
+            });
+        }
+    </script>
+
+    <!-- Google Maps API -->
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+
+</body>
+</html>
