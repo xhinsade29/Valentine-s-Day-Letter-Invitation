@@ -6,75 +6,71 @@ body {
     flex-direction: column;
     background: #fde2e4;
     margin: 0;
-    font-family: 'Arial', sans-serif; /* Modern font */
+    font-family: 'Poppins', sans-serif;
     padding: 20px;
     height: 100vh;
     overflow: hidden;
     color: #333;
 }
 
+/* Background Video */
 .video-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: -1;
     overflow: hidden;
 }
 
-#background-video {
+.video-background video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    filter: brightness(0.7);
 }
 
+/* Main Container */
 .letter-container {
-    background: #fff;
-    padding: 20px;
-    border: 2px solid #f78fb3;
-    border-radius: 12px;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    max-width: 800px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 25px;
+    border: 3px solid #f78fb3;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-width: 850px;
     width: 100%;
     display: flex;
     flex-direction: column;
     gap: 20px;
-    transform: translateY(-30px);
-    animation: slideIn 0.5s ease-out forwards;
-    padding-left: 40px;
+    transform: translateY(-20px);
+    animation: fadeIn 0.6s ease-out forwards;
 }
 
-/* Animating the appearance of the container */
-@keyframes slideIn {
-    0% {
-        transform: translateY(-30px);
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from {
         opacity: 0;
+        transform: translateY(-20px);
     }
-    100% {
-        transform: translateY(0);
+    to {
         opacity: 1;
+        transform: translateY(0);
     }
 }
 
+/* Place Info */
 .place-container {
     display: flex;
     flex-direction: row;
     gap: 20px;
     align-items: flex-start;
-    transition: transform 0.3s ease;
 }
-
-.place-info:hover {
-    transform: scale(1.05);
-}
-
 
 .place-info {
     flex: 1;
-    position: relative;
     overflow: hidden;
-    border-radius: 8px;
+    border-radius: 10px;
     max-width: 100%;
 }
 
@@ -82,22 +78,22 @@ body {
     width: 100%;
     height: 250px;
     object-fit: cover;
-    border-radius: 8px;
-    transition: transform 0.3s ease;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
 }
 
 .place-info img:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
-/* Map styling */
+/* Map Styling */
 .map-container {
     margin-top: 10px;
     border-radius: 8px;
     overflow: hidden;
-    max-width: 100%;
 }
 
+/* Place Details */
 .place-details {
     flex: 1;
     display: flex;
@@ -106,33 +102,35 @@ body {
 }
 
 .place-details h2 {
-    font-size: 26px;
+    font-size: 28px;
     color: #f78fb3;
-    margin-bottom: 10px;
     font-weight: bold;
+    margin-bottom: 10px;
 }
 
 .place-details p {
     font-size: 18px;
-    color: #555;
+    color: #444;
     margin-bottom: 8px;
 }
 
+/* Contact Section */
 #place-contact {
     font-size: 18px;
-    color: #333;
     margin-top: 15px;
 }
 
 #place-contact p {
     margin-bottom: 10px;
     font-size: 16px;
+    display: flex;
+    align-items: center;
 }
 
 #place-contact i {
     margin-right: 10px;
     color: #f78fb3;
-    font-size: 20px;
+    font-size: 22px;
 }
 
 .contact-text {
@@ -142,84 +140,85 @@ body {
 
 /* Button Styles */
 .activities-button {
-    background-color: #f78fb3;
+    background: linear-gradient(135deg, #f78fb3, #ff4081);
     color: #fff;
     border: none;
-    padding: 14px 28px;
-    border-radius: 6px;
+    padding: 14px 30px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 18px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px 10px rgba(247, 143, 179, 0.4);
     margin: 5px;
-    width: 120px;
+    width: 130px;
 }
 
 .activities-button:hover {
-    background-color: #e66798;
-    transform: translateY(-2px);
+    background: linear-gradient(135deg, #ff4081, #f78fb3);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 12px rgba(247, 143, 179, 0.5);
 }
 
 .activities-button:active {
-    transform: translateY(2px);
+    transform: translateY(1px);
 }
 
+/* Button Container */
 .button-container {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
 }
 
-/* List Styles */
+/* Activities Section */
+.activities-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #f78fb3;
+    border-bottom: 2px solid #f78fb3;
+    display: inline-block;
+    padding-bottom: 5px;
+}
+
+/* Activities List */
 .activities-list {
     margin-top: 10px;
-    padding-left: 0; /* Removed extra padding */
+    padding-left: 0;
     font-size: 18px;
     color: #333;
     list-style: none;
 }
 
 .activities-list li {
-    margin-bottom: 10px; /* Adjusted spacing */
-    padding: 12px 20px; /* Reduced padding */
-    background-color: #f9f9f9;
-    border: 2px solid #ccc;
+    margin-bottom: 10px;
+    padding: 12px 18px;
+    background-color: #fdf4f5;
+    border: 2px solid #ff8fa3;
     border-radius: 8px;
-    transition: background-color 0.3s ease, color 0.3s ease;
-    position: relative;
+    transition: all 0.3s ease-in-out;
     display: flex;
     align-items: center;
-    justify-content: flex-start;
 }
 
-/* Custom bullet point */
 .activities-list li::before {
-    content: "• ";
-    color: #f78fb3;
-    font-weight: bold;
-    margin-right: 10px; /* Adjusted space between bullet and text */
+    content: "🌸";
+    margin-right: 12px;
+    font-size: 18px;
 }
 
 .activities-list li:hover {
-    background-color: #e1f5fe;
-    color: #f78fb3;
-    border-color: #f78fb3;
+    background-color: #ffe3e7;
+    color: #ff4081;
+    border-color: #ff4081;
 }
 
-.activities-list li:hover .activity-text {
-    color: inherit; /* Keep the original text color */
-}
-
-/* Smooth scroll on the page */
-html {
-    scroll-behavior: smooth;
-}
-
-/* Responsive adjustments for smaller screens */
+/* Responsive Adjustments */
 @media screen and (max-width: 768px) {
     .letter-container {
-        padding: 15px;
-        max-width: 90%;
-        padding-left: 20px;
+        padding: 20px;
+        max-width: 95%;
     }
 
     .place-container {
@@ -238,22 +237,4 @@ html {
     .map-container iframe {
         height: 200px;
     }
-}
-
-/* Styling for the activities section */
-.activities-title {
-    font-size: 1.8em;
-    font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 10px;
-    color: #f78fb3;
-}
-
-/* Styling for the contact section */
-#place-contact p {
-    margin: 5px 0;
-}
-
-#place-contact i {
-    margin-right: 10px;
 }
