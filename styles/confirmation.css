@@ -1,55 +1,201 @@
+/* General Styles */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background: #ffe4e1;
-    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
     text-align: center;
+    color: white;
 }
 
-video-background {
+/* Background Video */
+.video-background {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 0;
+    z-index: -1;
     overflow: hidden;
 }
 
-#background-video {
+video {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
 
+/* Main Container */
 .container {
-    background: white;
-    padding: 20px;
+    position: relative;
+    width: 450px;
+    padding: 30px;
+    background: rgba(255, 192, 203, 0.95);
     border-radius: 15px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+    margin: 100px auto;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.buttons {
-    margin-top: 20px;
+/* Image */
+.images {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
 }
 
+.images img {
+    width: 250px;
+    height: auto;
+    object-fit: cover;
+    animation: heartbeat 1.5s infinite ease-in-out;
+    filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.8));
+}
+
+/* Heartbeat Animation */
+@keyframes heartbeat {
+    0% { transform: scale(1); }
+    30% { transform: scale(1.1); }
+    50% { transform: scale(1); }
+    70% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+/* Heading */
+h1 {
+    font-size: 26px;
+    font-weight: bold;
+    color: #fff;
+    text-shadow: 2px 2px 10px rgba(255, 20, 147, 0.7);
+}
+
+/* Buttons */
 button {
     font-size: 20px;
-    padding: 10px 20px;
+    padding: 12px 30px;
     border: none;
     cursor: pointer;
-    border-radius: 10px;
+    border-radius: 12px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    outline: none;
 }
 
+/* Yes Button */
 #yes-button {
-    background: #ff69b4;
+    background: linear-gradient(45deg, #ff4da6, #ff0066);
     color: white;
+    box-shadow: 0 4px 15px rgba(255, 20, 147, 0.5);
 }
 
+#yes-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(255, 20, 147, 0.7);
+}
+
+/* No Button */
 #no-button {
-    background: #ff4444;
+    background: linear-gradient(45deg, #d3d3d3, #a9a9a9);
+    color: black;
+}
+
+#no-button:hover {
+    transform: scale(1.1);
+}
+
+/* Popup Form */
+.popup {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 192, 203, 0.98);
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(255, 20, 147, 0.5);
+    text-align: center;
+    z-index: 1000;
+    width: 350px;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translate(-50%, -55%); }
+    to { opacity: 1; transform: translate(-50%, -50%); }
+}
+
+/* Popup Title */
+.popup h2 {
+    font-size: 24px;
+    color: #ff0066;
+    text-shadow: 2px 2px 5px rgba(255, 20, 147, 0.7);
+    margin-bottom: 15px;
+}
+
+/* Input Fields */
+.popup label {
+    display: block;
+    font-size: 16px;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(255, 20, 147, 0.6);
+    margin-top: 10px;
+}
+
+.popup input {
+    width: 90%;
+    padding: 12px;
+    margin-top: 5px;
+    font-size: 16px;
+    border: 2px solid #ff4da6;
+    border-radius: 8px;
+    outline: none;
+    background: white;
+    transition: 0.3s;
+}
+
+/* Input Focus Effect */
+.popup input:focus {
+    border-color: #ff0066;
+    box-shadow: 0 0 8px rgba(255, 20, 147, 0.5);
+}
+
+/* Submit Button */
+.popup button {
+    margin-top: 20px;
+    padding: 12px 20px;
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: all 0.3s ease-in-out;
+    outline: none;
+    background: linear-gradient(45deg, #ff4da6, #ff0066);
     color: white;
+    box-shadow: 0 4px 15px rgba(255, 20, 147, 0.5);
+}
+
+.popup button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(255, 20, 147, 0.7);
+}
+
+/* Close Button */
+.popup .close-btn {
     position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.popup .close-btn:hover {
+    color: #ff0066;
 }
