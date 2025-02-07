@@ -74,6 +74,6 @@ function sendMail() {
         });
 }
 
-function closePopup() {
-    document.getElementById("form-popup").style.display = "none";
-}
+        function closePopup() {
+            document.getElementById("form-popup").style.display = "none";
+        }
