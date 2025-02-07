@@ -38,7 +38,7 @@ function goToActivities() {
 
     // Redirect to the activities page after the click sound finishes playing
     clickSound.onended = function() {
-        window.location.href = 'activities.html'; // Redirect to activities page
+        window.location.href = 'map.html'; // Redirect to activities page
     };
 }
 
