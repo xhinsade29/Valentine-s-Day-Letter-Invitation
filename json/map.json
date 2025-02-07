@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Pizza Kid",
+        "coordinates": [8.357462, 124.8650361],
+        "info": "Enjoy delicious pizzas in a cozy setting."
+    },
+    {
+        "title": "Don Machiatto Cafe",
+        "coordinates": [8.367679414129869, 124.86368551254361],
+        "info": "Perfect spot for coffee lovers and casual meet-ups."
+    },
+    {
+        "title": "Camp Phillips Bazaar",
+        "coordinates": [8.324123579895774, 124.81203845732459],
+        "info": "A local bazaar for unique finds and local goods."
+    },
+    {
+        "title": "Dahilayan Forest Park",
+        "coordinates": [8.204155401177754, 124.85692631772872],
+        "info": "Adventure and nature combined for an unforgettable experience."
+    }
+]

@@ -4,77 +4,41 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Map of Date Locations</title>
-    <style>
-        #map {
-            height: 500px;
-            width: 100%;
-            border-radius: 10px;
-        }
-    </style>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="styles/map.css">
 </head>
-<body>
+<body class="bg-pink-100 flex flex-col items-center justify-center min-h-screen">
 
-    <h2>Map of Date Activities in Tankulan, Manolo Fortich</h2>
-    <div id="map"></div>
+    <!-- Background Video -->
+    <div class="video-background">
+        <video autoplay muted loop id="background-video">
+            <source src="src/background.mp4" type="video/mp4">
+        </video>
+    </div>
 
-    <script>
-        function initMap() {
-            // Center map on Manolo Fortich
-            const center = { lat: 8.357462, lng: 124.8650361 };
+    <h2 class="text-2xl font-bold text-pink-600 mb-4">Map of Date Location</h2>
+    
+    <div id="map" class="w-full max-w-3xl h-96 rounded-lg shadow-lg"></div>
 
-            // Create map
-            const map = new google.maps.Map(document.getElementById("map"), {
-                zoom: 13,
-                center: center,
-            });
+    <!-- "See Activities" Button -->
+    <div class="mt-4">
+        <button id="see-activities" class="px-6 py-2 bg-pink-500 text-white font-semibold rounded-lg shadow hover:bg-pink-600 transition">
+            See Activities
+        </button>
+    </div>
 
-            // Locations from JSON
-            const places = [
-                {
-                    title: "Pizza Kid",
-                    coordinates: { lat: 8.357462, lng: 124.8650361 },
-                    info: "Enjoy delicious pizzas in a cozy setting."
-                },
-                {
-                    title: "Don Machiatto Cafe",
-                    coordinates: { lat: 8.367679414129869, lng: 124.86368551254361 },
-                    info: "Perfect spot for coffee lovers and casual meet-ups."
-                },
-                {
-                    title: "Camp Phillips Bazaar",
-                    coordinates: { lat: 8.324123579895774, lng: 124.81203845732459 },
-                    info: "A local bazaar for unique finds and local goods."
-                },
-                {
-                    title: "Dahilayan Forest Park",
-                    coordinates: { lat: 8.204155401177754, lng: 124.85692631772872 },
-                    info: "Adventure and nature combined for an unforgettable experience."
-                }
-            ];
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script src="scripts/map.js"></script>
 
-            // Add markers to map
-            places.forEach(place => {
-                const marker = new google.maps.Marker({
-                    position: place.coordinates,
-                    map: map,
-                    title: place.title
-                });
-
-                // Info window
-                const infoWindow = new google.maps.InfoWindow({
-                    content: `<h3>${place.title}</h3><p>${place.info}</p>`
-                });
-
-                // Show info window on click
-                marker.addListener("click", () => {
-                    infoWindow.open(map, marker);
-                });
-            });
-        }
-    </script>
-
-    <!-- Google Maps API -->
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+    <!-- Background Music & Sound Effects -->
+    <audio id="background-music" src="audio/bgmusic.mp3" autoplay loop playsinline></audio>
+    <audio id="click-sound" src="audio/mouse-click.mp3"></audio> 
 
 </body>
 </html>

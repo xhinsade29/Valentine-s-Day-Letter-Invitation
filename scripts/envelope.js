@@ -27,7 +27,7 @@ function openEnvelope() {
     createHeartConfetti();
 
     setTimeout(() => {
-        window.location.href = 'letter.html';
+        window.location.href = 'map.html';
     }, 500);
 }
 

@@ -65,9 +65,10 @@ body {
     transition: transform 0.3s ease;
 }
 
-.place-container:hover {
+.place-info:hover {
     transform: scale(1.05);
 }
+
 
 .place-info {
     flex: 1;
@@ -151,8 +152,6 @@ body {
     transition: background-color 0.3s ease, transform 0.2s ease;
     margin: 5px;
     width: 120px;
-    padding-left: 15px;
-    padding-right: 15px;
 }
 
 .activities-button:hover {
@@ -173,22 +172,23 @@ body {
 /* List Styles */
 .activities-list {
     margin-top: 10px;
-    padding-left: 20px;
+    padding-left: 0; /* Removed extra padding */
     font-size: 18px;
     color: #333;
     list-style: none;
 }
 
 .activities-list li {
-    margin-bottom: 15px;
-    padding: 15px;
+    margin-bottom: 10px; /* Adjusted spacing */
+    padding: 12px 20px; /* Reduced padding */
     background-color: #f9f9f9;
     border: 2px solid #ccc;
     border-radius: 8px;
     transition: background-color 0.3s ease, color 0.3s ease;
-    padding-left: 25px; /* Increase padding to avoid text touching left border */
-    padding-right: 25px; /* Increase padding to avoid text touching right border */
     position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
 }
 
 /* Custom bullet point */
@@ -196,7 +196,7 @@ body {
     content: "• ";
     color: #f78fb3;
     font-weight: bold;
-    margin-right: 15px; /* Space between bullet and text */
+    margin-right: 10px; /* Adjusted space between bullet and text */
 }
 
 .activities-list li:hover {

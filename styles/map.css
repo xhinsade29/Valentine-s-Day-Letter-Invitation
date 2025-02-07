@@ -1,0 +1,81 @@
+/* General Styles */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    color: white;
+}
+
+/* Background Video */
+.video-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+}
+
+#background-video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Map Styles */
+#map {
+    height: 500px; /* Increased size */
+    width: 90%;
+    max-width: 800px;
+    border-radius: 10px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom Pink Marker */
+.custom-marker {
+    width: 32px;
+    height: 32px;
+    background-color: #ff69b4; /* Hot Pink */
+    border-radius: 50%;
+    border: 4px solid white;
+    box-shadow: 0px 0px 10px rgba(255, 20, 147, 0.8);
+}
+
+/* Pink Polyline (Road Path) */
+.leaflet-interactive {
+    stroke: #ff69b4 !important; /* Hot Pink Path */
+    stroke-width: 4px !important;
+    opacity: 0.8 !important;
+}
+
+/* Button Styles */
+.button-container {
+    margin-top: 15px;
+    text-align: center;
+}
+
+#see-activities {
+    padding: 12px 24px;
+    background-color: #ff69b4; /* Hot Pink */
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    box-shadow: 0 4px 6px rgba(255, 20, 147, 0.4);
+}
+
+#see-activities:hover {
+    background-color: #ff1493; /* Darker Pink */
+    transform: scale(1.05);
+}
+
+/* Click Effect */
+#see-activities:active {
+    transform: scale(0.95);
+}
