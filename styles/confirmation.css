@@ -5,6 +5,11 @@ body {
     font-family: 'Poppins', sans-serif;
     text-align: center;
     color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
 }
 
 /* Background Video */
@@ -27,12 +32,13 @@ video {
 /* Main Container */
 .container {
     position: relative;
-    width: 450px;
-    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    padding: 5%;
     background: rgba(255, 192, 203, 0.95);
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
-    margin: 100px auto;
+    margin: 5vh auto;
     text-align: center;
     backdrop-filter: blur(10px);
     display: flex;
@@ -45,10 +51,12 @@ video {
     display: flex;
     justify-content: center;
     margin-bottom: 15px;
+    flex-wrap: wrap;
 }
 
 .images img {
-    width: 250px;
+    width: 80%;
+    max-width: 250px;
     height: auto;
     object-fit: cover;
     animation: heartbeat 1.5s infinite ease-in-out;
@@ -66,7 +74,8 @@ video {
 
 /* Heading */
 h1 {
-    font-size: 26px;
+    font-size: 5vw;
+    max-size: 26px;
     font-weight: bold;
     color: #fff;
     text-shadow: 2px 2px 10px rgba(255, 20, 147, 0.7);
@@ -74,8 +83,9 @@ h1 {
 
 /* Buttons */
 button {
-    font-size: 20px;
-    padding: 12px 30px;
+    font-size: 1.5vw;
+    max-size: 20px;
+    padding: 10px 5vw;
     border: none;
     cursor: pointer;
     border-radius: 12px;
@@ -114,12 +124,13 @@ button {
     left: 50%;
     transform: translate(-50%, -50%);
     background: rgba(255, 192, 203, 0.98);
-    padding: 25px;
+    padding: 5%;
     border-radius: 15px;
     box-shadow: 0 10px 30px rgba(255, 20, 147, 0.5);
     text-align: center;
     z-index: 1000;
-    width: 350px;
+    width: 90%;
+    max-width: 350px;
     animation: fadeIn 0.4s ease-in-out;
 }
 
@@ -131,7 +142,8 @@ button {
 
 /* Popup Title */
 .popup h2 {
-    font-size: 24px;
+    font-size: 5vw;
+    max-size: 24px;
     color: #ff0066;
     text-shadow: 2px 2px 5px rgba(255, 20, 147, 0.7);
     margin-bottom: 15px;
@@ -140,14 +152,15 @@ button {
 /* Input Fields */
 .popup label {
     display: block;
-    font-size: 16px;
+    font-size: 4vw;
+    max-size: 16px;
     color: #fff;
     text-shadow: 1px 1px 3px rgba(255, 20, 147, 0.6);
     margin-top: 10px;
 }
 
 .popup input {
-    width: 90%;
+    width: 100%;
     padding: 12px;
     margin-top: 5px;
     font-size: 16px;
@@ -167,8 +180,9 @@ button {
 /* Submit Button */
 .popup button {
     margin-top: 20px;
-    padding: 12px 20px;
-    font-size: 18px;
+    padding: 12px 5vw;
+    font-size: 4vw;
+    max-size: 18px;
     border: none;
     cursor: pointer;
     border-radius: 8px;

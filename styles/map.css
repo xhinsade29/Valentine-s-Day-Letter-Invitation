@@ -10,6 +10,7 @@ body {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
+    padding: 2vw; /* Flexible padding */
 }
 
 /* Background Video */
@@ -32,16 +33,16 @@ body {
 
 /* Title Styling */
 h2 {
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 3vw, 2rem); /* Flexible font size */
     font-weight: bold;
     color: #ff69b4;
     text-shadow: 2px 2px 6px rgba(255, 20, 147, 0.5);
     background: rgba(255, 255, 255, 0.2);
     backdrop-filter: blur(10px);
-    padding: 10px 20px;
+    padding: clamp(8px, 2vw, 10px) clamp(15px, 3vw, 20px); /* Responsive padding */
     border-radius: 10px;
     display: inline-block;
-    margin-top: 20px;
+    margin-top: clamp(10px, 2vw, 20px);
     animation: fadeIn 0.8s ease-in-out;
 }
 
@@ -59,13 +60,13 @@ h2 {
 
 /* Map Styles */
 #map {
-    height: 500px;
+    height: clamp(300px, 50vh, 500px); /* Flexible height */
     width: 90%;
     max-width: 800px;
     border-radius: 12px;
-    margin: 20px auto;
+    margin: clamp(10px, 2vw, 20px) auto;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-    border: 3px solid rgba(255, 105, 180, 0.6);
+    border: clamp(2px, 0.5vw, 3px) solid rgba(255, 105, 180, 0.6); /* Responsive border */
     transition: transform 0.3s ease-in-out;
 }
 
@@ -75,41 +76,42 @@ h2 {
 
 /* Custom Pink Marker */
 .custom-marker {
-    width: 32px;
-    height: 32px;
+    width: clamp(24px, 5vw, 32px);
+    height: clamp(24px, 5vw, 32px);
     background-color: #ff69b4;
     border-radius: 50%;
-    border: 4px solid white;
+    border: clamp(3px, 1vw, 4px) solid white;
     box-shadow: 0px 0px 10px rgba(255, 20, 147, 0.8);
 }
 
 /* Pink Polyline (Road Path) */
 .leaflet-interactive {
     stroke: #ff69b4 !important;
-    stroke-width: 4px !important;
+    stroke-width: clamp(2px, 0.7vw, 4px) !important;
     opacity: 0.9 !important;
 }
 
 /* Button Container */
 .button-container {
-    margin-top: 15px;
+    margin-top: clamp(10px, 2vw, 15px);
     text-align: center;
 }
 
 /* "See Activities" Button */
 #see-activities {
-    padding: 14px 32px;
+    padding: clamp(10px, 2vw, 14px) clamp(24px, 4vw, 32px); /* Responsive padding */
     background: linear-gradient(135deg, #ff69b4, #ff1493);
     color: white;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem); /* Responsive font size */
     font-weight: bold;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     box-shadow: 0 4px 10px rgba(255, 20, 147, 0.4);
-    margin-top: 20px;
-    animation: fadeIn 1s ease-in-out;
+    margin-top: clamp(10px, 2vw, 20px);
+    width: auto;
+    min-width: 140px;
 }
 
 /* Button Hover Effect */
@@ -128,15 +130,15 @@ h2 {
 /* Responsive Design */
 @media screen and (max-width: 768px) {
     h2 {
-        font-size: 1.5rem;
+        font-size: clamp(1.2rem, 4vw, 1.5rem);
     }
 
     #map {
-        height: 400px;
+        height: clamp(250px, 40vh, 400px);
     }
 
     #see-activities {
         width: 90%;
-        font-size: 1rem;
+        font-size: clamp(0.85rem, 3vw, 1rem);
     }
 }

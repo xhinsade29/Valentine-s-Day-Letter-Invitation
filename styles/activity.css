@@ -7,9 +7,8 @@ body {
     background: #fde2e4;
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    padding: 20px;
-    height: 100vh;
-    overflow: hidden;
+    padding: 5%;
+    min-height: 100vh;
     color: #333;
 }
 
@@ -34,7 +33,7 @@ body {
 /* Main Container */
 .letter-container {
     background: rgba(255, 255, 255, 0.95);
-    padding: 25px;
+    padding: 2rem;
     border: 3px solid #f78fb3;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
@@ -42,8 +41,7 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    transform: translateY(-20px);
+    gap: 1.5rem;
     animation: fadeIn 0.6s ease-out forwards;
 }
 
@@ -59,19 +57,19 @@ body {
     }
 }
 
-/* Place Info */
+/* Place Info - Flexible Grid Layout */
 .place-container {
     display: flex;
-    flex-direction: row;
-    gap: 20px;
-    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
 }
 
+/* Image Container */
 .place-info {
     flex: 1;
-    overflow: hidden;
-    border-radius: 10px;
-    max-width: 100%;
+    min-width: 300px;
+    max-width: 400px;
 }
 
 .place-info img {
@@ -86,43 +84,37 @@ body {
     transform: scale(1.05);
 }
 
-/* Map Styling */
-.map-container {
-    margin-top: 10px;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
 /* Place Details */
 .place-details {
     flex: 1;
+    min-width: 300px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .place-details h2 {
-    font-size: 28px;
+    font-size: clamp(1.5rem, 2vw, 2rem);
     color: #f78fb3;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 .place-details p {
-    font-size: 18px;
+    font-size: clamp(1rem, 1.5vw, 1.2rem);
     color: #444;
     margin-bottom: 8px;
 }
 
 /* Contact Section */
 #place-contact {
-    font-size: 18px;
+    font-size: 1rem;
     margin-top: 15px;
 }
 
 #place-contact p {
     margin-bottom: 10px;
-    font-size: 16px;
+    font-size: 1rem;
     display: flex;
     align-items: center;
 }
@@ -138,7 +130,22 @@ body {
     font-weight: bold;
 }
 
-/* Button Styles */
+/* Map Styling */
+.map-container {
+    margin-top: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+/* Button Container - Flexible Layout */
+.button-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Buttons */
 .activities-button {
     background: linear-gradient(135deg, #f78fb3, #ff4081);
     color: #fff;
@@ -146,11 +153,13 @@ body {
     padding: 14px 30px;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 18px;
+    font-size: 1rem;
     transition: all 0.3s ease-in-out;
     box-shadow: 0 4px 10px rgba(247, 143, 179, 0.4);
-    margin: 5px;
-    width: 130px;
+    flex: 1;
+    min-width: 130px;
+    max-width: 200px;
+    text-align: center;
 }
 
 .activities-button:hover {
@@ -163,16 +172,9 @@ body {
     transform: translateY(1px);
 }
 
-/* Button Container */
-.button-container {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-}
-
 /* Activities Section */
 .activities-title {
-    font-size: 22px;
+    font-size: clamp(1.2rem, 2vw, 1.5rem);
     font-weight: bold;
     margin-top: 20px;
     margin-bottom: 10px;
@@ -186,13 +188,16 @@ body {
 .activities-list {
     margin-top: 10px;
     padding-left: 0;
-    font-size: 18px;
+    font-size: 1rem;
     color: #333;
     list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
 }
 
 .activities-list li {
-    margin-bottom: 10px;
     padding: 12px 18px;
     background-color: #fdf4f5;
     border: 2px solid #ff8fa3;
@@ -200,6 +205,10 @@ body {
     transition: all 0.3s ease-in-out;
     display: flex;
     align-items: center;
+    flex: 1;
+    min-width: 200px;
+    max-width: 300px;
+    justify-content: center;
 }
 
 .activities-list li::before {
@@ -217,17 +226,17 @@ body {
 /* Responsive Adjustments */
 @media screen and (max-width: 768px) {
     .letter-container {
-        padding: 20px;
+        padding: 15px;
         max-width: 95%;
     }
 
     .place-container {
         flex-direction: column;
+        align-items: center;
     }
 
     .activities-button {
         width: 100%;
-        margin: 10px 0;
     }
 
     .place-info img {
@@ -236,5 +245,10 @@ body {
 
     .map-container iframe {
         height: 200px;
+    }
+
+    .activities-list {
+        flex-direction: column;
+        align-items: center;
     }
 }
