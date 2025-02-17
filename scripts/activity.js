@@ -33,13 +33,13 @@ function showPlace(index) {
         let iconHTML = '';
 
         // Check for contact type (Facebook, Instagram, Website, Phone) and set appropriate icons
-        if (info.includes('Facebook')) {
+        if (info.toLowerCase().includes('facebook')) {
             iconHTML = '<i class="fab fa-facebook"></i>';
-        } else if (info.includes('Instagram')) {
+        } else if (info.toLowerCase().includes('instagram')) {
             iconHTML = '<i class="fab fa-instagram"></i>';
-        } else if (info.includes('Website')) {
+        } else if (info.toLowerCase().includes('website')) {
             iconHTML = '<i class="fas fa-globe"></i>';
-        } else if (info.includes('Contact')) {
+        } else if (info.toLowerCase().includes('contact')) {
             iconHTML = '<i class="fas fa-phone-alt"></i>';
         }
 
@@ -67,6 +67,11 @@ function showPlace(index) {
             src="https://www.google.com/maps?q=${place.coordinates[0]},${place.coordinates[1]}&output=embed"
             allowfullscreen>
         </iframe>`;
+    
+    // Ensure map visibility when button is clicked
+    document.querySelector('.see-location-btn').addEventListener('click', () => {
+        mapContainer.classList.toggle('show');
+    });
 }
 
 // Function to play click sound

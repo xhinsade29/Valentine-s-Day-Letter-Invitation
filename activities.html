@@ -5,13 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Date Activities in Tankulan, Manolo Fortich</title>
     <link rel="stylesheet" href="styles/activity.css">
-    <!-- Include FontAwesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 <body>
 
-     <!-- Background Video -->
-     <div class="video-background">
+    <!-- Background Video -->
+    <div class="video-background">
         <video autoplay muted loop>
             <source src="src/background.mp4" type="video/mp4">
         </video>
@@ -21,22 +20,28 @@
         <div class="place-container">
             <div class="place-info">
                 <img src="" alt="Place Image" id="place-image">
-                <div class="map-container" id="place-map"></div>
+
+                <!-- See Location Button -->
+                <button class="activities-button see-location-btn" id="see-location-btn">
+                    <i class="fas fa-map-marker-alt"></i> See Location
+                </button>
+
+                <!-- Map (Initially Hidden) -->
+                <div class="map-container hidden" id="place-map"></div>
             </div>
+
             <div class="place-details">
                 <h2 id="place-title"></h2>
                 <p id="place-description"></p>
                 <p id="place-availability"></p>
+
                 <div id="place-contact">
-                    <!-- Contact with icons -->
                     <p><i class="fas fa-phone-alt"></i> <span class="contact-text">Contact: 09649968998</span></p>
                     <p><i class="fab fa-facebook"></i> <span class="contact-text">Facebook: @PizzaKid</span></p>
                 </div>
                 
-                <!-- Activities Section with Title and Border -->
                 <h3 class="activities-title">Activities</h3>
                 <ul class="activities-list" id="place-activities">
-                    <!-- Activities will be inserted dynamically here -->
                     <li><span class="activity-text">Activity 1: Explore the surroundings</span></li>
                     <li><span class="activity-text">Activity 2: Enjoy local delicacies</span></li>
                     <li><span class="activity-text">Activity 3: Scenic photo opportunities</span></li>
@@ -50,7 +55,6 @@
         </div>
     </div>
 
-    
     <audio id="background-music" src="audio/bgmusic.mp3" autoplay loop playsinline></audio>
     <audio id="click-sound" src="audio/mouse-click.mp3"></audio> 
 

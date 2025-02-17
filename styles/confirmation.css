@@ -33,14 +33,14 @@ video {
 .container {
     position: relative;
     width: 90%;
-    max-width: 450px;
+    max-width: 420px;
     padding: 5%;
-    background: rgba(255, 192, 203, 0.95);
+    background: rgba(255, 192, 203, 0.9);
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(255, 105, 180, 0.4);
+    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.3);
     margin: 5vh auto;
     text-align: center;
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(8px);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -50,41 +50,39 @@ video {
 .images {
     display: flex;
     justify-content: center;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
     flex-wrap: wrap;
 }
 
 .images img {
-    width: 80%;
-    max-width: 250px;
+    width: 75%;
+    max-width: 220px;
     height: auto;
     object-fit: cover;
     animation: heartbeat 1.5s infinite ease-in-out;
-    filter: drop-shadow(0 0 10px rgba(255, 20, 147, 0.8));
+    filter: drop-shadow(0 0 8px rgba(255, 20, 147, 0.7));
 }
 
 /* Heartbeat Animation */
 @keyframes heartbeat {
     0% { transform: scale(1); }
-    30% { transform: scale(1.1); }
+    30% { transform: scale(1.08); }
     50% { transform: scale(1); }
-    70% { transform: scale(1.1); }
+    70% { transform: scale(1.08); }
     100% { transform: scale(1); }
 }
 
 /* Heading */
 h1 {
-    font-size: 5vw;
-    max-size: 26px;
+    font-size: clamp(18px, 4vw, 24px);
     font-weight: bold;
     color: #fff;
-    text-shadow: 2px 2px 10px rgba(255, 20, 147, 0.7);
+    text-shadow: 2px 2px 8px rgba(255, 20, 147, 0.6);
 }
 
 /* Buttons */
 button {
-    font-size: 1.5vw;
-    max-size: 20px;
+    font-size: clamp(14px, 2.5vw, 18px);
     padding: 10px 5vw;
     border: none;
     cursor: pointer;
@@ -98,12 +96,12 @@ button {
 #yes-button {
     background: linear-gradient(45deg, #ff4da6, #ff0066);
     color: white;
-    box-shadow: 0 4px 15px rgba(255, 20, 147, 0.5);
+    box-shadow: 0 4px 12px rgba(255, 20, 147, 0.5);
 }
 
 #yes-button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(255, 20, 147, 0.7);
+    transform: scale(1.08);
+    box-shadow: 0 6px 18px rgba(255, 20, 147, 0.6);
 }
 
 /* No Button */
@@ -113,7 +111,7 @@ button {
 }
 
 #no-button:hover {
-    transform: scale(1.1);
+    transform: scale(1.08);
 }
 
 /* Popup Form */
@@ -123,14 +121,14 @@ button {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: rgba(255, 192, 203, 0.98);
+    background: rgba(255, 192, 203, 0.95);
     padding: 5%;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(255, 20, 147, 0.5);
+    box-shadow: 0 8px 20px rgba(255, 20, 147, 0.5);
     text-align: center;
     z-index: 1000;
     width: 90%;
-    max-width: 350px;
+    max-width: 340px;
     animation: fadeIn 0.4s ease-in-out;
 }
 
@@ -142,18 +140,16 @@ button {
 
 /* Popup Title */
 .popup h2 {
-    font-size: 5vw;
-    max-size: 24px;
+    font-size: clamp(18px, 4vw, 22px);
     color: #ff0066;
-    text-shadow: 2px 2px 5px rgba(255, 20, 147, 0.7);
+    text-shadow: 2px 2px 5px rgba(255, 20, 147, 0.6);
     margin-bottom: 15px;
 }
 
 /* Input Fields */
 .popup label {
     display: block;
-    font-size: 4vw;
-    max-size: 16px;
+    font-size: clamp(14px, 3.5vw, 16px);
     color: #fff;
     text-shadow: 1px 1px 3px rgba(255, 20, 147, 0.6);
     margin-top: 10px;
@@ -161,7 +157,7 @@ button {
 
 .popup input {
     width: 100%;
-    padding: 12px;
+    padding: 10px;
     margin-top: 5px;
     font-size: 16px;
     border: 2px solid #ff4da6;
@@ -179,10 +175,9 @@ button {
 
 /* Submit Button */
 .popup button {
-    margin-top: 20px;
-    padding: 12px 5vw;
-    font-size: 4vw;
-    max-size: 18px;
+    margin-top: 18px;
+    padding: 10px 5vw;
+    font-size: clamp(14px, 3.5vw, 16px);
     border: none;
     cursor: pointer;
     border-radius: 8px;
@@ -191,12 +186,12 @@ button {
     outline: none;
     background: linear-gradient(45deg, #ff4da6, #ff0066);
     color: white;
-    box-shadow: 0 4px 15px rgba(255, 20, 147, 0.5);
+    box-shadow: 0 4px 12px rgba(255, 20, 147, 0.5);
 }
 
 .popup button:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 20px rgba(255, 20, 147, 0.7);
+    box-shadow: 0 6px 16px rgba(255, 20, 147, 0.6);
 }
 
 /* Close Button */
@@ -204,7 +199,7 @@ button {
     position: absolute;
     top: 10px;
     right: 15px;
-    font-size: 24px;
+    font-size: 22px;
     color: white;
     cursor: pointer;
     transition: 0.3s;

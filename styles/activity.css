@@ -7,7 +7,7 @@ body {
     background: #fde2e4;
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    padding: 5%;
+    padding: 3%;
     min-height: 100vh;
     color: #333;
 }
@@ -33,15 +33,15 @@ body {
 /* Main Container */
 .letter-container {
     background: rgba(255, 255, 255, 0.95);
-    padding: 2rem;
-    border: 3px solid #f78fb3;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    max-width: 850px;
+    padding: 1.2rem;
+    border: 2px solid #f78fb3;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    max-width: 750px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
     animation: fadeIn 0.6s ease-out forwards;
 }
 
@@ -49,7 +49,7 @@ body {
 @keyframes fadeIn {
     from {
         opacity: 0;
-        transform: translateY(-20px);
+        transform: translateY(-15px);
     }
     to {
         opacity: 1;
@@ -57,72 +57,107 @@ body {
     }
 }
 
-/* Place Info - Flexible Grid Layout */
+/* Place Info - Adaptive Grid */
 .place-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1rem;
     justify-content: center;
+    align-items: start;
 }
 
 /* Image Container */
 .place-info {
-    flex: 1;
-    min-width: 300px;
-    max-width: 400px;
+    width: 100%;
 }
 
 .place-info img {
     width: 100%;
-    height: 250px;
+    height: auto;
+    max-height: 210px;
     object-fit: cover;
     border-radius: 10px;
-    transition: transform 0.3s ease-in-out;
+    transition: transform 0.25s ease-in-out, box-shadow 0.3s;
 }
 
 .place-info img:hover {
-    transform: scale(1.05);
+    transform: scale(1.04);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* See Location Button */
+.see-location-btn {
+    background: linear-gradient(135deg, #ff4081, #f78fb3);
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.3s ease-in-out;
+    width: 100%;
+    margin-top: 8px;
+    text-align: center;
+    box-shadow: 0 3px 6px rgba(255, 64, 129, 0.3);
+}
+
+.see-location-btn:hover {
+    background: linear-gradient(135deg, #f78fb3, #ff4081);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(255, 64, 129, 0.4);
+}
+
+/* Map Container (Initially Hidden) */
+.map-container {
+    width: 100%;
+    height: 220px;
+    border-radius: 8px;
+    overflow: hidden;
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.map-container.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(5px);
 }
 
 /* Place Details */
 .place-details {
-    flex: 1;
-    min-width: 300px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    gap: 8px;
 }
 
 .place-details h2 {
-    font-size: clamp(1.5rem, 2vw, 2rem);
+    font-size: clamp(1.3rem, 2vw, 1.6rem);
     color: #f78fb3;
     font-weight: bold;
-    margin-bottom: 10px;
 }
 
 .place-details p {
-    font-size: clamp(1rem, 1.5vw, 1.2rem);
+    font-size: clamp(1rem, 1.3vw, 1.15rem);
     color: #444;
-    margin-bottom: 8px;
 }
 
 /* Contact Section */
 #place-contact {
-    font-size: 1rem;
-    margin-top: 15px;
+    font-size: 0.9rem;
+    margin-top: 10px;
 }
 
 #place-contact p {
-    margin-bottom: 10px;
-    font-size: 1rem;
     display: flex;
     align-items: center;
+    font-size: 0.95rem;
+    gap: 6px;
 }
 
 #place-contact i {
-    margin-right: 10px;
     color: #f78fb3;
-    font-size: 22px;
+    font-size: 20px;
 }
 
 .contact-text {
@@ -130,14 +165,7 @@ body {
     font-weight: bold;
 }
 
-/* Map Styling */
-.map-container {
-    margin-top: 10px;
-    border-radius: 8px;
-    overflow: hidden;
-}
-
-/* Button Container - Flexible Layout */
+/* Button Container */
 .button-container {
     display: flex;
     flex-wrap: wrap;
@@ -145,39 +173,34 @@ body {
     justify-content: center;
 }
 
-/* Buttons */
+/* Navigation Buttons */
 .activities-button {
     background: linear-gradient(135deg, #f78fb3, #ff4081);
     color: #fff;
     border: none;
-    padding: 14px 30px;
+    padding: 12px 20px;
     border-radius: 8px;
     cursor: pointer;
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: all 0.3s ease-in-out;
-    box-shadow: 0 4px 10px rgba(247, 143, 179, 0.4);
+    box-shadow: 0 4px 10px rgba(247, 143, 179, 0.3);
     flex: 1;
-    min-width: 130px;
-    max-width: 200px;
+    min-width: 120px;
+    max-width: 170px;
     text-align: center;
 }
 
 .activities-button:hover {
     background: linear-gradient(135deg, #ff4081, #f78fb3);
     transform: translateY(-3px);
-    box-shadow: 0 6px 12px rgba(247, 143, 179, 0.5);
-}
-
-.activities-button:active {
-    transform: translateY(1px);
+    box-shadow: 0 5px 12px rgba(247, 143, 179, 0.4);
 }
 
 /* Activities Section */
 .activities-title {
-    font-size: clamp(1.2rem, 2vw, 1.5rem);
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
     font-weight: bold;
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin-top: 18px;
     color: #f78fb3;
     border-bottom: 2px solid #f78fb3;
     display: inline-block;
@@ -188,33 +211,34 @@ body {
 .activities-list {
     margin-top: 10px;
     padding-left: 0;
-    font-size: 1rem;
+    font-size: 0.95rem;
     color: #333;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
     justify-content: center;
 }
 
 .activities-list li {
-    padding: 12px 18px;
+    padding: 10px 16px;
     background-color: #fdf4f5;
-    border: 2px solid #ff8fa3;
+    border: 1.5px solid #ff8fa3;
     border-radius: 8px;
     transition: all 0.3s ease-in-out;
     display: flex;
     align-items: center;
-    flex: 1;
-    min-width: 200px;
-    max-width: 300px;
     justify-content: center;
+    flex: 1;
+    min-width: 150px;
+    max-width: 240px;
+    text-align: center;
 }
 
 .activities-list li::before {
     content: "🌸";
-    margin-right: 12px;
-    font-size: 18px;
+    margin-right: 6px;
+    font-size: 16px;
 }
 
 .activities-list li:hover {
@@ -226,13 +250,15 @@ body {
 /* Responsive Adjustments */
 @media screen and (max-width: 768px) {
     .letter-container {
-        padding: 15px;
-        max-width: 95%;
+        padding: 12px;
+        max-width: 96%;
     }
 
     .place-container {
+        display: flex;
         flex-direction: column;
         align-items: center;
+        gap: 1rem;
     }
 
     .activities-button {
@@ -240,15 +266,20 @@ body {
     }
 
     .place-info img {
-        height: 200px;
+        height: 190px;
     }
 
-    .map-container iframe {
-        height: 200px;
+    .map-container {
+        height: 190px;
     }
 
     .activities-list {
         flex-direction: column;
         align-items: center;
+    }
+
+    .activities-list li {
+        width: 100%;
+        min-width: 170px;
     }
 }
