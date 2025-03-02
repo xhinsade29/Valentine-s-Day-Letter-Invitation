@@ -41,38 +41,34 @@ function validateEmail(email) {
     return /^[a-zA-Z0-9._%+-]+@gmail\.com$/i.test(email);
 }
 
-// ✅ Send Email Function
-function sendMail() {
-    let userName = document.getElementById("name-input").value;
-    let userEmail = document.getElementById("email-input").value;
 
-    if (!userName || !validateEmail(userEmail)) {
-        alert("Please enter a valid name and Gmail address! ❌");
-        return; // ⛔ Stops execution if invalid input
+    function sendMail() {
+        // Kuha ang values gikan sa form inputs
+        const userName = document.getElementById("name-input").value;
+        const userEmail = document.getElementById("email-input").value;
+
+        // Check kung dili empty ang fields ug valid ang email
+        if (userName && userEmail && validateEmail(userEmail)) {
+            // Prepare ang email params
+            const templateParams = {
+                to_name: userName,
+                user_email: userEmail,
+                from_name: "Your Beloved", // Add your name here
+            };
+
+            // Gamit ang EmailJS service ug template
+            emailjs.send("service_vcyy6z6", "template_er9m065", templateParams)
+                .then(function(response) {
+                    alert("Email sent successfully! 🥰");
+                    console.log("SUCCESS!", response.status, response.text);
+                }, function(error) {
+                    alert("Failed to send email. 😢");
+                    console.log("FAILED...", error);
+                });
+        } else {
+            alert("Please fill out all the fields!");
+        }
     }
-
-    let params = {
-        user_name: userName,
-        user_email: userEmail
-    };
-
-    emailjs.send("service_vcyy6z6", "template_er9m065", params)
-        .then(function (response) {
-            console.log("✅ Email Sent Successfully!", response);
-            alert(`Email confirmation sent to ${userEmail}! 💌`);
-
-            window.close(); // ⛔ Stops execution after alert
-
-            // This part won't execute due to return above
-            document.getElementById("form-popup").style.display = "none";
-            document.getElementById("response-message").innerHTML = `Yay, ${userName}! Can't wait to see you! 💖🎉`;
-        })
-        .catch(function (error) {
-            console.error("❌ EmailJS Error:", error);
-            alert(`Oops! Something went wrong: ${error.text || "Unknown error"}`);
-            return; // ⛔ Stops execution after error alert
-        });
-}
 
         function closePopup() {
             document.getElementById("form-popup").style.display = "none";

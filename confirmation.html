@@ -9,7 +9,7 @@
     <!-- EmailJS & Confetti Libraries -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.3.1"></script>
-    
+   
     <script>
         (function(){
             emailjs.init("LeGSwnqcXJ-xai3OW"); // Replace with your actual Public Key
@@ -17,6 +17,14 @@
     </script>
 </head>
 <body>
+ <!--
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+<script type="text/javascript">
+    (function(){
+        emailjs.init("LeGSwnqcXJ-xai3OW"); // Puli ug sakto nga USER ID gikan sa EmailJS dashboard
+    })();
+</script> -->
+
 
     <!-- Background Video -->
     <div class="video-background">
@@ -40,23 +48,23 @@
         <p id="response-message"></p>
     </div>
 
-    <!-- Hidden Form -->
-    <div id="form-popup" class="popup" style="display: none;">
-        <div class="popup-content">
-            <h2>Enter Your Details 💌</h2>
-            <label for="name-input">Name/Nickname:</label>
-            <input type="text" id="name-input" placeholder="Enter your name: " required>
+   <!-- Hidden Form -->
+<div id="form-popup" class="popup" style="display: none;">
+    <div class="popup-content">
+        <h2>Enter Your Details 💌</h2>
+        <label for="name-input">Name/Nickname:</label>
+        <input type="text" id="name-input" name="user_name" placeholder="Enter your name: " required>
 
-            <label for="email-input">Gmail:</label>
-            <input type="email" id="email-input" placeholder="Enter your Gmail: " required>
+        <label for="email-input">Gmail:</label>
+        <input type="email" id="email-input" name="user_email" placeholder="Enter your Gmail: " required>
 
-            <button id="submit-button">Confirm My Date! ❤️</button>
-            
-            <!-- Close Button -->
-            <span class="close-btn" onclick="closePopup()">❌</span>
-
-        </div>
+        <button id="submit-button" onclick="sendMail()">Confirm My Date! ❤️</button>
+        
+        <!-- Close Button -->
+        <span class="close-btn" onclick="closePopup()">❌</span>
     </div>
+</div>
+
 
     <audio id="background-music" src="audio/bgmusic.mp3" autoplay loop playsinline></audio>
     <audio id="click-sound" src="audio/mouse-click.mp3"></audio> 
